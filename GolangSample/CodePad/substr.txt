@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello")
+	str := "kljsdfkljsadfkljasdk'fjaksdjf'kasjdf'oasjdfo'jasdf"
+	fmt.Println("String : ", str, " SubString Array : ", str[2:4])
+	fmt.Println("String : ", str, " SubString : ", substr(str, 2, 4))
+}
+func substr(str string, start int, end int) string {
+	result := ""
+	for i := 0; i < len(str); i++ {
+		if i >= start && i <= end-1 {
+			result += string(str[i])
+		}
+	}
+	return result
+}
