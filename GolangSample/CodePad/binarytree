@@ -1,0 +1,53 @@
+package main
+
+import "fmt"
+
+type Node struct {
+	data  int
+	left  *Node
+	right *Node
+}
+
+func (root *Node) navigate() {
+	if root != nil {
+		root.left.navigate()
+		fmt.Println(root.data)
+		root.right.navigate()
+	}
+}
+
+func insert(a int, root *Node) *Node {
+	if root == nil {
+		root = &Node{a, nil, nil}
+	} else if a < root.data {
+		root.left = insert(a, root.left)
+	} else {
+		root.right = insert(a, root.right)
+	}
+	return root
+}
+
+func main() {
+	fmt.Println("Namaste")
+
+	tree := insert(100, nil)
+	tree.navigate()
+	fmt.Println("----")
+
+	tree = insert(90, tree)
+	tree.navigate()
+	fmt.Println("----")
+
+	tree = insert(190, tree)
+	tree.navigate()
+	fmt.Println("----")
+
+	tree = insert(89, tree)
+	tree.navigate()
+	fmt.Println("----")
+
+	tree = insert(95, tree)
+	tree.navigate()
+	fmt.Println("----")
+	tree.navigate()
+}
